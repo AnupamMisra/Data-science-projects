@@ -77,6 +77,8 @@ def plot2(dataf, genres):
     sns.lineplot(x="VarCount", y="Frequency",data=dataf, ax=ax[1],color='royalblue')
     ax[1].set_xlabel('No. of different genres read by a reader')
     ax[1].set_ylabel('No. of books read by the reader in the last six months')    
+    #ax[0].axhline(genres.mean(), color='red')  
+    #ax[0].text(40,genres.mean()+0.5,"Mean", fontsize=18) 
 
 
 def plot3(pphc,d):

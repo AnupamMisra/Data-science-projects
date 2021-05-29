@@ -16,7 +16,7 @@ from sklearn import feature_selection
 
 def prepare():
     
-    dataf = pd.read_csv(r"C:/Users/Anupam/Downloads/Books_with_coffee.csv")
+    dataf = pd.read_csv(r"C:/Users/ADMIN/Downloads/Books_with_coffee.csv")
     dataf.columns = ["Timestamp", "Format", "Beverage", "Music","Target", "Frequency","Connect","Variety"]
     dataf["VarCount"] = dataf.Variety.apply(lambda stri: len(stri.split(",")))   #Count of variety of books read by people
     format_count = dataf.groupby('Format')['Format'].count()

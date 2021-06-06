@@ -71,8 +71,17 @@ Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `
 
 # Model output (sample):
 
+Model|	Revenue saved|	Predicted(True positive)|	Missed(False negative)|	F1 score|	ROC_AUC	Model|
+-----|---------------|--------------------------|-----------------------|---------|--------------|
+Naive Bayes|	191000|	88.20|	11.80|	0.556279|	0.736797|	GaussianNB()|
+Logistic regression|	190000|	82.60|	17.40|	0.590095|	0.758774|	LogisticRegression(C=0.01, solver='liblinear')|
+K Nearest Neighbors|	170000|	86.43|	13.57|	0.558627|	0.737294|	KNeighborsClassifier(n_neighbors=47)|
+Support Vector Machine|	-168500|	94.10|	5.90|	0.440608|	0.601343|	SVC(C=0.001, kernel='poly')|
+
+
+
 Lost revenue if we do not prevent churn = Rs.9345000 
-Assumed cost of losing a customer:5000 
+\n Assumed cost of losing a customer:5000 
 Assumed cost of effort to prevent churn:1500 
 
 Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%

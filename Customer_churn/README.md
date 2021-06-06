@@ -92,7 +92,8 @@ Percentage of customers missed who were going to churn: 11.8%
 Revenue saved by preventing churn with our model as compared to no model = Rs. 1,91,000
 
 
-Total expenditure for preventing churn on random 50.0% of customers:5283000
-Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
+Total expenditure for preventing churn on random 50.0% of customers:52,83,000
 
->Our 'Naive Bayes' model saves us Rs.799333 on an average compared to a random selection of 50% customers
+Extra cost to prevent churn within random 50.0% of the customers = Rs.6,08,333
+
+>Our 'Naive Bayes' model saves us Rs.7,99,333 on an average compared to a random selection of 50% customers

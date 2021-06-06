@@ -13,3 +13,8 @@ Our goal in this project is to understand churn behaviour among customers. Subse
 # Data exploration
 
 ## ![Personal factors](https://i.ibb.co/5LqNr02/personal-factors.png)
+Observations:
+
+* Gender has no influence on churn
+* Single people are more likely to churn
+* People without dependents are more likely to churn

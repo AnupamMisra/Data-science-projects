@@ -12,3 +12,4 @@ Our goal in this project is to understand churn behaviour among customers. Subse
 
 # Data exploration
 
+## ![Personal factors](https://ibb.co/0rPgC7Q)

@@ -78,17 +78,21 @@ Logistic regression|	190000|	82.60|	17.40|	0.590095|	0.758774|	LogisticRegressio
 K Nearest Neighbors|	170000|	86.43|	13.57|	0.558627|	0.737294|	KNeighborsClassifier(n_neighbors=47)|
 Support Vector Machine|	-168500|	94.10|	5.90|	0.440608|	0.601343|	SVC(C=0.001, kernel='poly')|
 
+>Assumed cost of losing a customer:5000
 
-
->Lost revenue if we do not prevent churn = Rs.9345000 
->Assumed cost of losing a customer:5000 
 >Assumed cost of effort to prevent churn:1500 
 
->Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%
->Percentage of customers missed who were going to churn: 11.8%
->Revenue saved by preventing churn with our model as compared to no model = Rs. 191000
+>Lost revenue if we do not prevent churn = Rs.93,45,000
 
 
->Total expenditure for preventing churn on random 50.0% of customers:5283000
->Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
+Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%
+
+Percentage of customers missed who were going to churn: 11.8%
+
+Revenue saved by preventing churn with our model as compared to no model = Rs. 1,91,000
+
+
+Total expenditure for preventing churn on random 50.0% of customers:5283000
+Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
+
 >Our 'Naive Bayes' model saves us Rs.799333 on an average compared to a random selection of 50% customers

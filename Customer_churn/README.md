@@ -67,7 +67,7 @@ Data is split into train and test sets. The overrepresented class(0) is undersam
 
 # Model training and evaluation
 
-Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers.
+Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
 
 # Model output (sample):
 
@@ -80,15 +80,15 @@ Support Vector Machine|	-168500|	94.10|	5.90|	0.440608|	0.601343|	SVC(C=0.001, k
 
 
 
-Lost revenue if we do not prevent churn = Rs.9345000 
-\n Assumed cost of losing a customer:5000 
-Assumed cost of effort to prevent churn:1500 
+>Lost revenue if we do not prevent churn = Rs.9345000 
+>Assumed cost of losing a customer:5000 
+>Assumed cost of effort to prevent churn:1500 
 
-Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%
-Percentage of customers missed who were going to churn: 11.8%
-Revenue saved by preventing churn with our model as compared to no model = Rs. 191000
+>Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%
+>Percentage of customers missed who were going to churn: 11.8%
+>Revenue saved by preventing churn with our model as compared to no model = Rs. 191000
 
 
-Total expenditure for preventing churn on random 50.0% of customers:5283000
-Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
-Our 'Naive Bayes' model saves us Rs.799333 on an average compared to a random selection of 50% customers
+>Total expenditure for preventing churn on random 50.0% of customers:5283000
+>Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
+>Our 'Naive Bayes' model saves us Rs.799333 on an average compared to a random selection of 50% customers

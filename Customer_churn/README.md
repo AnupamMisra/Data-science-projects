@@ -19,3 +19,68 @@ Our goal in this project is to understand churn behaviour among customers. Subse
 * Gender has no influence on churn
 * Single people are more likely to churn
 * People without dependents are more likely to churn
+
+![Contract](https://i.ibb.co/TkpT2bZ/contract.png)
+
+`Observations:`
+
+* Maximum people who churn are on a monthly contract and mostly bill in a paperless manner. Maybe these are tech savvy people who switch to a different carrier as soon as they find a better deal
+
+![Payment](https://i.ibb.co/r3509PR/payment.png)
+
+`Observations:`
+
+* Maximum people who pay electronically, churn. This supports our hypothesis that tech savvy people churn more often.
+
+![Charges](https://i.ibb.co/80yXBzg/charges.png)
+
+`Observations:`
+
+* Most of the people who churn have low total charges with the carrier
+* Some people who churn are customers who have high monthly and total charges. These are valuable customers whom we would want to retain
+
+![Duration](https://i.ibb.co/V9fyTpv/duration.png)
+
+`Observations:`
+
+* Maximum customers who churn do so during the early period of their subscription. We have to try to reduce early discontinuations of our service
+
+![img](https://i.ibb.co/y035fv3/img.png)
+
+`Observations:`
+
+* Customers with single phone service and no internet service churn the most
+* Among customers with internet service, they choose the faster Fibre optic without any protection/security or backup and churn the most
+* Among these customers who have churned, most have never contacted the tech support
+
+These customers are young tech savvy thrifty customers who supposedly change the subscription as soon as they spot a better offer.
+
+![img2](https://i.ibb.co/wYgTP67/img2.png)
+
+`Observations:`
+
+* Maximum people who churn do not stream movies or TV, i.e. they are not dependent on the subscription for streamed media consumption
+
+# Data preparation
+
+Data is split into train and test sets. The overrepresented class(0) is undersampled using `RandomUnderSampler`.
+
+# Model training and evaluation
+
+Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers.
+
+# Model output (sample):
+
+Lost revenue if we do not prevent churn = Rs.9345000 
+
+Assumed cost of losing a customer:5000 
+Assumed cost of effort to prevent churn:1500 
+
+Percentage of customers predicted by 'Naive Bayes' who were going to churn: 88.2%
+Percentage of customers missed who were going to churn: 11.8%
+Revenue saved by preventing churn with our model as compared to no model = Rs. 191000
+
+
+Total expenditure for preventing churn on random 50.0% of customers:5283000
+Extra cost to prevent churn within random 50.0% of the customers = Rs.608333
+Our 'Naive Bayes' model saves us Rs.799333 on an average compared to a random selection of 50% customers

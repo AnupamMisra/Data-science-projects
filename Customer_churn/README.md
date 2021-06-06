@@ -71,7 +71,7 @@ Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `
 
 # Model output (sample):
 
-Model|	Revenue saved|	Predicted(True positive)|	Missed(False negative)|	F1 score|	ROC_AUC	Model|
+Model|	Revenue saved|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score(%)|	ROC_AUC	Model(%)|
 -----|---------------|--------------------------|-----------------------|---------|--------------|
 Random Forest|	277000|	85.25|	14.75|	0.607781|	0.775319|	(DecisionTreeClassifier(max_depth=10, max_feat...
 Logistic regression|	204500|	82.89|	17.11|	0.594080|	0.762118|	LogisticRegression(C=0.01, solver='liblinear')

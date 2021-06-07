@@ -1,14 +1,15 @@
 # Business problem:
 
-Companies usually have a greater focus on customer acquisition and keep retention as a secondary priority. However, it can cost five times more to attract a new customer than it does to retain an existing one. Increasing customer retention rates by 5% can increase profits by 25% to 95%, according to research done by Bain & Company.
+Companies usually have a greater focus on customer acquisition than customer. However, it can cost anywhere between five to twenty five times more to attract a new customer than retain an existing one. Increasing customer retention rates by 5% can increase profits by 25%, according to a [research] done by Bain & Company.(https://hbr.org/2014/10/the-value-of-keeping-the-right-customers)  
 
-Churn is a metric that shows customers who stop doing business with a company or a particular service, also known as customer attrition. By following this metric, what most businesses could do was try to understand the reason behind churn numbers and tackle those factors, with reactive action plans.
+Churn is a metric that measures the no. of customers who stop doing business with a company. Through this metric, most businesses would try to understand the reason behind churn numbers and tackle those factors with reactive action plans.
 
-But what if you could know in advance that a specific customer is likely to leave your business, and have a chance to take proper actions in time to prevent it from happening? The reasons that lead customers to the cancellation decision can be numerous, coming from poor service quality, delay on customer support, prices, new competitors entering the market, and so on. Usually, there is no single reason, but a combination of events that somehow culminated in customer displeasure.
+But what if you could identify a customer who is likely to churn and take appropriate steps to prevent it from happening? The reasons that lead customers to the cancellation decision can be numerous, ranging from poor service quality to new competitors entering the market. Usually, there is no single reason, but a combination of factors that result to customer churn.
 
-If your company were not capable to identify these signals and take actions prior to the cancel button click, there is no turning back, your customer is already gone. But you still have something valuable: the data. Your customer left very good clues about where you left to be desired. It can be a valuable source for meaningful insights and to train customer churn models. Learn from the past, and have strategic information at hand to improve future experiences, it’s all about machine learning.
+Although the customers have churned, their data is still available. Through machine learning we can sift through this valuable data to discover patterns and understand the combination of different factors which lead to customer churn.
 
-Our goal in this project is to understand churn behaviour among customers. Subsequent to that we need to train a machine learning model to identify these signals from a customer before they churn. Once deployed, our model will identify customers who might churn and alert us to take necessary steps to prevent their churn.
+Our goal in this project is to identify behavior among customers who are likely to churn. Subsequent to that we need to train a machine learning model to identify these signals from a customer before they churn. Once deployed, our model will identify customers who might churn and alert us to take necessary steps to prevent their churn.
+
 
 # Data exploration
 
@@ -16,15 +17,15 @@ Our goal in this project is to understand churn behaviour among customers. Subse
 
 `Observations:`
 
-* Gender has no influence on churn
-* Single people are more likely to churn
-* People without dependents are more likely to churn
+* Gender has no influence on churn.
+* Single people are more likely to churn.
+* People without dependents are more likely to churn.
 
 ![Contract](https://i.ibb.co/TkpT2bZ/contract.png)
 
 `Observations:`
 
-* Maximum people who churn are on a monthly contract and mostly bill in a paperless manner. Maybe these are tech savvy people who switch to a different carrier as soon as they find a better deal
+* Maximum people who churn are on a monthly contract and mostly bill in a paperless manner. Maybe these are tech savvy people who switch to a different carrier as soon as they find a better deal.
 
 ![Payment](https://i.ibb.co/r3509PR/payment.png)
 
@@ -36,30 +37,30 @@ Our goal in this project is to understand churn behaviour among customers. Subse
 
 `Observations:`
 
-* Most of the people who churn have low total charges with the carrier
-* Some people who churn are customers who have high monthly and total charges. These are valuable customers whom we would want to retain
+* Most of the people who churn have low total charges with the carrier.
+* Some people who churn are customers who have high monthly and total charges. Maybe these are corporate customers who are churn when they are offered a more competitive offer.
 
 ![Duration](https://i.ibb.co/V9fyTpv/duration.png)
 
 `Observations:`
 
-* Maximum customers who churn do so during the early period of their subscription. We have to try to reduce early discontinuations of our service
+* Maximum customers churn during the early period of their subscription.
 
 ![img](https://i.ibb.co/y035fv3/img.png)
 
 `Observations:`
 
-* Customers with single phone service and no internet service churn the most
-* Among customers with internet service, they choose the faster Fibre optic without any protection/security or backup and churn the most
-* Among these customers who have churned, most have never contacted the tech support
+* Customers with single phone service and no internet service churn the most. Maybe these are people who are not very well off.
+* Among customers with internet service, they choose the faster Fibre optic without any protection/security or backup and churn the most.
+* Among these customers who have churned, most have never contacted the tech support.
 
-These customers are young tech savvy thrifty customers who supposedly change the subscription as soon as they spot a better offer.
+These customers are probably young tech savvy thrifty customers who change the subscription as soon as they spot a better offer.
 
 ![img2](https://i.ibb.co/wYgTP67/img2.png)
 
 `Observations:`
 
-* Maximum people who churn do not stream movies or TV, i.e. they are not dependent on the subscription for streamed media consumption
+* Maximum people who churn do not stream movies or TV, i.e. they are not dependent on the subscription for streamed media consumption.
 
 # Data preparation
 
@@ -67,7 +68,7 @@ Data is split into train and test sets. The overrepresented class(0) is undersam
 
 # Model training and evaluation
 
-Four models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
+Five models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was picked at runtime after the input was given for the cost of churn and the cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
 
 # Model output (sample):
 

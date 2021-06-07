@@ -72,13 +72,13 @@ Five models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logisti
 
 # Model output (sample):
 
-Model|	Revenue saved|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score|	ROC_AUC	Model|
+Model|	Revenue saved|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score|	ROC_AUC|
 -----|---------------|--------------------------|-----------------------|---------|--------------|
-Random Forest|	251000|	83.78|	16.22| 0.607487|	0.773085|	(DecisionTreeClassifier(max_depth=10, max_feat...
-Logistic regression|	206500|	82.60|	17.40|	0.597015|	0.763914|	LogisticRegression(C=0.01, solver='liblinear')
-Naive Bayes|	183500|	87.32|	12.68|	0.558491|	0.737980|	GaussianNB()
-K Nearest Neighbors|	169000|	85.25|	14.75|	0.565005|	0.741674|	KNeighborsClassifier(n_neighbors=47)
-Support Vector Machine|	-164000|	94.10|	5.90|	0.441522|	0.602744|	SVC(C=0.001, kernel='poly')
+Random Forest|	251000|	83.78|	16.22| 0.607487|	0.773085|
+Logistic regression|	206500|	82.60|	17.40|	0.597015|	0.763914|
+Naive Bayes|	183500|	87.32|	12.68|	0.558491|	0.737980|
+K Nearest Neighbors|	169000|	85.25|	14.75|	0.565005|	0.741674|
+Support Vector Machine|	-164000|	94.10|	5.90|	0.441522|	0.602744|
 
 >Assumed cost of losing a customer:5000
 

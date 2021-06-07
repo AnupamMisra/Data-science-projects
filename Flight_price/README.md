@@ -40,9 +40,9 @@ Travel agencies need to track and predict fluctuations in flight prices to provi
 
 After trying out different models and doing hyper parameter tuning, Random Forest performed the best. I used MAE as the evaluation metric. This was done so that the travel company's stakeholders could easily interpret the result and factor in this error in their travel package cost calculation.
 
-Absolute error for Decision tree regressor: Rs. 292.6 ± 26.6
+Absolute error for Decision tree regressor: Rs. 288.65 ± 25.49
 
-Absolute error for Random forest regressor: Rs. 264.36 ± 17.33
+Absolute error for Random forest regressor: Rs. 263.85 ± 15.06
 
 Absolute error for XGB Regressor: Rs. 322.58 ± 14.56
 
@@ -57,4 +57,4 @@ Some of the important features as per Random Forest in reducing order of importa
 8. Whether the flight is SpiceJet
 9. Departure time(hours)
 
-It is good to have our hunches confirmed by data.
+Most of the important features are as expected. Nevertheless it is good to have our hunches confirmed with data.

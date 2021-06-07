@@ -74,11 +74,11 @@ Five models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logisti
 
 Model|	Revenue saved|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score|	ROC_AUC	Model|
 -----|---------------|--------------------------|-----------------------|---------|--------------|
-Random Forest|	277000|	85.25|	14.75|	0.607781|	0.775319|	(DecisionTreeClassifier(max_depth=10, max_feat...
-Logistic regression|	204500|	82.89|	17.11|	0.594080|	0.762118|	LogisticRegression(C=0.01, solver='liblinear')
-K Nearest Neighbors|	198500|	87.32|	12.68|	0.563810|	0.742653|	KNeighborsClassifier(n_neighbors=47)
-Naive Bayes|	196500|	88.50| 11.50|	0.556586|	0.737338|	GaussianNB()
-Support Vector Machine|	-168500|	94.10|	5.90|	0.440608|	0.601343|	SVC(C=0.001, kernel='poly')
+Random Forest|	251000|	83.78|	16.22| 0.607487|	0.773085|	(DecisionTreeClassifier(max_depth=10, max_feat...
+Logistic regression|	206500|	82.60|	17.40|	0.597015|	0.763914|	LogisticRegression(C=0.01, solver='liblinear')
+Naive Bayes|	183500|	87.32|	12.68|	0.558491|	0.737980|	GaussianNB()
+K Nearest Neighbors|	169000|	85.25|	14.75|	0.565005|	0.741674|	KNeighborsClassifier(n_neighbors=47)
+Support Vector Machine|	-164000|	94.10|	5.90|	0.441522|	0.602744|	SVC(C=0.001, kernel='poly')
 
 >Assumed cost of losing a customer:5000
 
@@ -86,15 +86,15 @@ Support Vector Machine|	-168500|	94.10|	5.90|	0.440608|	0.601343|	SVC(C=0.001, k
 
 >Lost revenue if we do not prevent churn = Rs.93,45,000
 
-Percentage of customers predicted by 'Random Forest' who were going to churn: 85.25%
+Percentage of customers predicted by 'Random Forest' who were going to churn: 83.78%
 
-Percentage of customers missed who were going to churn: 14.75%
+Percentage of customers missed who were going to churn: 16.22%
 
-Revenue saved by preventing churn with our model as compared to no model = Rs. 2,77,000
+Revenue saved by preventing churn with our model as compared to no model = Rs. 2,51,000
 
 
 Total expenditure for preventing churn on random 50.0% of customers:52,83,000
 
-Extra cost to prevent churn within random 50.0% of the customers = Rs.6,04,667
+Extra cost to prevent churn within random 50.0% of the customers = Rs.6,22,833
 
->Our 'Random Forest' model saves us Rs.8,81,667 on an average compared to a random selection of 50% customers
+>Our 'Random Forest' model saves us Rs.8,73,833 on an average compared to a random selection of 50% customers

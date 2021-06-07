@@ -80,9 +80,9 @@ Naive Bayes|	183500|	87.32|	12.68|	0.558491|	0.737980|
 K Nearest Neighbors|	169000|	85.25|	14.75|	0.565005|	0.741674|
 Support Vector Machine|	-164000|	94.10|	5.90|	0.441522|	0.602744|
 
->Assumed cost of losing a customer:5000
-
->Assumed cost of effort to prevent churn:1500 
+>Assumed cost of losing a customer: Rs.5000
+ 
+>Assumed cost of effort to prevent churn: Rs.1500 
 
 >Lost revenue if we do not prevent churn = Rs.93,45,000
 
@@ -92,8 +92,7 @@ Percentage of customers missed who were going to churn: 16.22%
 
 Revenue saved by preventing churn with our model as compared to no model = Rs. 2,51,000
 
-
-Total expenditure for preventing churn on random 50.0% of customers:52,83,000
+Total expenditure for preventing churn on random 50.0% of customers: Rs.52,83,000
 
 Extra cost to prevent churn within random 50.0% of the customers = Rs.6,22,833
 

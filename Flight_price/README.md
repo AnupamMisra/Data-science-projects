@@ -57,4 +57,4 @@ Some of the important features as per Random Forest in reducing order of importa
 8. Whether the flight is SpiceJet
 9. Departure time(hours)
 
-Most of the important features are as expected. Nevertheless it is good to have our hunches confirmed with data.
+Most of the important features are as expected. Nevertheless it is good to have our hunches confirmed by data.

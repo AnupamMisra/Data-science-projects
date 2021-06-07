@@ -32,7 +32,7 @@ KNN|	0.763441|	0.926136|	0.795122|	0.855643|
 
 We'll use GBM based on the above table as it scores >=90 in precision recall and F1 score. Also, a very high recall and stagnant precision score indicates that those models predict the negative class for almost all the observations in the test set.
 
-`Confusion matrix for GBM`
+Confusion matrix for `GBM`
 
 ||True positive|True negative|
 |-|--|--|
@@ -50,7 +50,9 @@ I have used a threshold of 0.5 for the positive class. But very small changes dr
 The result of lexicon based sentiment analysis:
 
 F1 score:  0.905885156063855
+
 Precision:  0.8837749883774988
+
 Accuracy:  0.8299612569952648
 
 Confusion matrix:

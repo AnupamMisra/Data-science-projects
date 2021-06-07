@@ -67,7 +67,7 @@ Data is split into train and test sets. The overrepresented class(0) is undersam
 
 # Model training and evaluation
 
-Four models were trained: `SVM` with polynomial kernel, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
+Four models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was selected at runtime based on the input give for cost of churn and cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
 
 # Model output (sample):
 

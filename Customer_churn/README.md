@@ -93,6 +93,7 @@ Revenue saved by preventing churn with our model as compared to no model = Rs. 2
 
 
 Total expenditure for preventing churn on random 50.0% of customers:52,83,000
+
 Extra cost to prevent churn within random 50.0% of the customers = Rs.6,04,667
 
 >Our 'Random Forest' model saves us Rs.8,81,667 on an average compared to a random selection of 50% customers

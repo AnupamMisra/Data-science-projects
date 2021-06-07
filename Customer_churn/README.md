@@ -1,6 +1,6 @@
 # Business problem:
 
-Companies usually have a greater focus on customer acquisition than customer. However, it can cost anywhere between five to twenty five times more to attract a new customer than retain an existing one. Increasing customer retention rates by 5% can increase profits by 25%, according to a [research] done by Bain & Company.(https://hbr.org/2014/10/the-value-of-keeping-the-right-customers)  
+Companies usually have a greater focus on customer acquisition than customer. However, it can cost anywhere between five to twenty five times more to attract a new customer than retain an existing one. Increasing customer retention rates by 5% can increase profits by 25%, according to a [research](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers) done by Bain & Company.  
 
 Churn is a metric that measures the no. of customers who stop doing business with a company. Through this metric, most businesses would try to understand the reason behind churn numbers and tackle those factors with reactive action plans.
 

@@ -30,7 +30,7 @@ BernoulliNB|	0.855914|	0.927681|	0.907317|	0.917386|
 Logistic|	0.843011|	0.896471|	0.929268|	0.912575|
 KNN|	0.763441|	0.926136|	0.795122|	0.855643|
 
-We'll use GBM based on the above table as it scores >=90 in precision recall and F1 score. Also, a very high recall and stagnant precision score indicates that those models predict the negative class for almost all the observations in the test set.
+We'll use GBM based on the above table as it scores >=0.90 in precision, recall and F1 score. Also, a very high recall and stagnant precision score indicates that those models predict the negative class for almost all the observations in the test set.
 
 Confusion matrix for `GBM`
 
@@ -45,7 +45,7 @@ After each sentiment is run through the sigmoid transformation:
 
 ![prob](https://i.ibb.co/SrX5hfv/prob.png)
 
-I have used a threshold of 0.5 for the positive class. But very small changes drastically change the classifications.
+I have used a threshold of 0.5 for the positive class. But very small changes in the probability threshold drastically change the classifications.
 
 The result of lexicon based sentiment analysis:
 

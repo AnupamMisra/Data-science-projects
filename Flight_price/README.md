@@ -46,7 +46,7 @@ Absolute error for Random forest regressor: Rs. 263.85 ± 15.06
 
 Absolute error for XGB Regressor: Rs. 322.58 ± 14.56
 
-Some of the important features as per Random Forest in reducing order of importance is as below:
+Some of the important features as per Decision tree in reducing order of importance is as below:
 1. Day of year
 2. Duration of flight (hours)
 3. Duration of flight (mins)

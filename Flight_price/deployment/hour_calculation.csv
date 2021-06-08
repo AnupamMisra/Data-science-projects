@@ -2,6 +2,11 @@ Airline,Source,Destination,Duration_hours,Duration_mins
 Air Asia,Bangalore,New Delhi,2.0,48.20224719101124
 Air Asia,Kolkata,Bangalore,4.766666666666667,32.8
 Air Asia,New Delhi,Cochin,9.55,30.875
+Air India,Bangalore,New Delhi,10.771084337349398,35.58734939759036
+Air India,Chennai,Kolkata,2.0,15.0
+Air India,Kolkata,Bangalore,16.8828125,26.103515625
+Air India,Mumbai,Hyderabad,5.573529411764706,22.316176470588236
+Air India,New Delhi,Cochin,18.373493975903614,25.174029451137883
 GoAir,Bangalore,New Delhi,2.086021505376344,50.215053763440864
 GoAir,Kolkata,Bangalore,6.8,29.4
 GoAir,New Delhi,Cochin,6.368421052631579,22.56578947368421

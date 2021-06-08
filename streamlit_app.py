@@ -40,7 +40,7 @@ def processor(dat, tim, route, airline):
     frame['route']=int(dic[route])
     frame=pd.DataFrame(frame).transpose()
     frame=frame.reindex(['Dep_hour', 'Dep_minutes', 'Duration_hours', 'Duration_mins',
-       'Air Asia', 'GoAir', 'IndiGo', 'SpiceJet', 'Vistara', 'Day of month',
+       'Air Asia', 'Air India', 'GoAir', 'IndiGo', 'SpiceJet', 'Vistara', 'Day of month',
        'Day of week', 'Month of year', 'Day of year', 'Dep_early morning',
        'Dep_evening', 'Dep_morning', 'Dep_night', 'Dep_noon', 'route'],axis=1)
     return frame

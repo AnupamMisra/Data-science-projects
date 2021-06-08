@@ -15,7 +15,7 @@ airline = st.selectbox('Preferred choice of airline',('Air Asia', 'GoAir', 'Indi
 
 
 st.write(f'Looking for flights for {route} via {airline} on {dat} at {tim}... ')
-h=pd.read_csv(r"./deployment/hour_calculation.csv")
+h=pd.read_csv(r"./Flight_price/deployment/hour_calculation.csv")
 
 
 def processor(dat, tim, route, airline):
@@ -52,7 +52,7 @@ try:
 
     datafr=processor(dat, tim, route, airline)
 
-    with open('./deployment/model','rb') as f:
+    with open('./Flight_price/deployment/model','rb') as f:
         model=pickle.load(f)
 
     prediction=model.predict(datafr)

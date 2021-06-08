@@ -7,12 +7,8 @@ st.title("Flight price prediction module for the awesome touring company")
  
 dat=st.date_input("When do you plan to take the flight?",datetime.datetime(2021,7,1))
 tim = st.time_input(f"At what time are you planning to fly on {dat}?",datetime.time(7,1))
-
 route = st.selectbox('Route options available',('Bangalore-New Delhi', 'Chennai-Kolkata', 'New Delhi-Cochin','Kolkata-Bangalore','Mumbai-Hyderabad'))
- 
 airline = st.selectbox('Preferred choice of airline',('Air Asia', 'GoAir', 'IndiGo', 'SpiceJet','Vistara'))
-
-
 
 st.write(f'Looking for flights for {route} via {airline} on {dat} at {tim}... ')
 h=pd.read_csv(r"./Flight_price/deployment/hour_calculation.csv")
@@ -34,6 +30,7 @@ def processor(dat, tim, route, airline):
     frame['Dep_evening'] = int(16<frame['Dep_hour']<=20)
     frame['Dep_night'] = int(23<frame['Dep_hour'])
     frame['IndiGo'] = int(airline=='IndiGo')
+    frame['Air India'] = int(airline=='Air India')
     frame['Air Asia'] = int(airline=='Air Asia')
     frame['GoAir'] = int(airline=='GoAir')
     frame['SpiceJet'] = int(airline=='SpiceJet')

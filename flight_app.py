@@ -55,6 +55,7 @@ try:
     prediction=model.predict(datafr)
 
     st.text(f"The estimated price for the flight is Rs. {prediction[0]}")
+    st.text("The prices won't be accurate as the model was trained on pre-Covid data.")
 
 
 except:

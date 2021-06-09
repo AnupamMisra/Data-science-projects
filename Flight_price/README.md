@@ -59,4 +59,4 @@ The model was deployed using Streamlit. The following details was captured:
 * Route selection ( I plan on adding source and destination once both way flight data is available) 
 * Prefered choice of airline
 
-Depending on the following input the model outputs the price. On some days, certain carrier's flights are not available. Try to spot these in the app! Here you [go:](https://share.streamlit.io/coderkol95/data-science-projects/flight_app.py)
+Depending on the following input the model outputs the price. On some days, certain carrier's flights are not available. Try to spot these in the app! Here you go: https://share.streamlit.io/coderkol95/data-science-projects/flight_app.py

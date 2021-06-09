@@ -1,6 +1,6 @@
 # Business problem:
 
-Companies usually have a greater focus on customer acquisition than customer. However, it can cost anywhere between five to twenty five times more to attract a new customer than retain an existing one. Increasing customer retention rates by 5% can increase profits by 25%, according to a [research](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers) done by Bain & Company.  
+Companies usually have a greater focus on customer acquisition than customer retention. However, it can cost anywhere between five to twenty five times more to attract a new customer than retain an existing one. Increasing customer retention rates by 5% can increase profits by 25%, according to a [research](https://hbr.org/2014/10/the-value-of-keeping-the-right-customers) done by Bain & Company.  
 
 Churn is a metric that measures the no. of customers who stop doing business with a company. Through this metric, most businesses would try to understand the reason behind churn numbers and tackle those factors with reactive action plans.
 
@@ -18,8 +18,9 @@ Our goal in this project is to identify behavior among customers who are likely 
 `Observations:`
 
 * Gender has no influence on churn.
+* Younger people are more likely to churn. This maybe due to senior citizens only using basic phone services or the phone service is facilitated by younger family members.
 * Single people are more likely to churn.
-* People without dependents are more likely to churn.
+* People without dependents are more likely to churn. These is in sync with the previous point. Maybe single people use more value added services, which is a very competitive space for telecom service providers.
 
 ![Contract](https://i.ibb.co/TkpT2bZ/contract.png)
 
@@ -38,7 +39,7 @@ Our goal in this project is to identify behavior among customers who are likely 
 `Observations:`
 
 * Most of the people who churn have low total charges with the carrier.
-* Some people who churn are customers who have high monthly and total charges. Maybe these are corporate customers who are churn when they are offered a more competitive offer.
+* Some people who churn are customers who have high monthly and total charges. Maybe these are corporate customers who churn when they are offered a more competitive package.
 
 ![Duration](https://i.ibb.co/V9fyTpv/duration.png)
 
@@ -51,7 +52,6 @@ Our goal in this project is to identify behavior among customers who are likely 
 `Observations:`
 
 * Customers with single phone service and no internet service churn the most. Maybe these are people who are not very well off.
-* Among customers with internet service, they choose the faster Fibre optic without any protection/security or backup and churn the most.
 * Among these customers who have churned, most have never contacted the tech support.
 
 These customers are probably young tech savvy thrifty customers who change the subscription as soon as they spot a better offer.
@@ -66,34 +66,56 @@ These customers are probably young tech savvy thrifty customers who change the s
 
 Data is split into train and test sets. The overrepresented class(0) is undersampled using `RandomUnderSampler`.
 
-# Model training and evaluation
+# Model training
 
-Five models were trained: `SVM` with polynomial kernel,`Random Forest`, `Logistic Regression`, `Gaussian Naive Bayes` and `KNN`. The model was picked at runtime after the input was given for the cost of churn and the cost to prevent churn. The comparison was also drawn with not using a model and using a random sample of 50% customers. The models were evaluated using F1 score and AUC_ROC.
+Five models were trained: 
+* Support Vector Machine
+* Naive Bayes
+* Logistic Regression
+* Random Forest
+* AdaBoost
+* Gradient Boosting Machine
 
-# Model output (sample):
+# Model evaluation (sample):
 
-Model|	Revenue saved|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score|	ROC_AUC|
+Model|	Revenue saved(Rs.)|	Predicted(True positive)(%)|	Missed(False negative)(%)|	F1 score|	ROC_AUC|
 -----|---------------|--------------------------|-----------------------|---------|--------------|
-Random Forest|	251000|	83.78|	16.22| 0.607487|	0.773085|
-Logistic regression|	206500|	82.60|	17.40|	0.597015|	0.763914|
-Naive Bayes|	183500|	87.32|	12.68|	0.558491|	0.737980|
-K Nearest Neighbors|	169000|	85.25|	14.75|	0.565005|	0.741674|
-Support Vector Machine|	-164000|	94.10|	5.90|	0.441522|	0.602744|
+AdaBoost|	271500|	84.96|	15.04|	0.607595|	0.774779|
+Random Forest|	250000|	84.37|	15.63|	0.602740|	0.770427|
+Gradient Boosting Machine|	228000|	83.19|	16.81|	0.601921|	0.768266|
+Logistic regression|	226500|	83.19|	16.81|	0.601279|	0.767798|
+Naive Bayes|	206000|	86.43|	13.57|	0.571707|	0.748509|
+Support Vector Machine|	204500|	82.01|	17.99|	0.600432|	0.765637|
 
->Assumed cost of losing a customer: Rs.5000
- 
+# Business summary
+
+Lost revenue if we do not prevent churn = Rs.9345000 
+
+>Assumed cost of losing a customer: Rs.5000 
+
 >Assumed cost of effort to prevent churn: Rs.1500 
 
->Lost revenue if we do not prevent churn = Rs.93,45,000
 
-Percentage of customers predicted by 'Random Forest' who were going to churn: 83.78%
 
-Percentage of customers missed who were going to churn: 16.22%
+Percentage of customers predicted by 'AdaBoost Classifier' who were going to churn: 84.96%
 
-Revenue saved by preventing churn with our model as compared to no model = Rs. 2,51,000
+Percentage of customers missed by 'AdaBoost Classifier' who were going to churn: 15.04%
 
-Total expenditure for preventing churn on random 50.0% of customers: Rs.52,83,000
+Revenue saved by preventing churn with our model as compared to no model = Rs 271500
 
-Extra cost to prevent churn within random 50.0% of the customers = Rs.6,22,833
 
->Our 'Random Forest' model saves us Rs.8,73,833 on an average compared to a random selection of 50% customers
+
+Total expenditure for preventing churn on random 50.0% of customers: Rs.5283000
+
+Extra cost to prevent churn within random 50.0% of the customers = Rs.585667
+
+Our 'AdaBoost Classifier' model saves us Rs.857167 on an average compared to a random selection of 50% customers
+
+
+# Deployment
+
+The model was deployed using streamlit.
+
+As the users won't check for churn of individual customers, a template was provided which could be downloaded and reuploaded after the data was filled in the indicated format. Then the web app would classify each customer if they would churn.
+
+Here's the app! : https://share.streamlit.io/coderkol95/data-science-projects/churn_app.py

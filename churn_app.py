@@ -79,7 +79,7 @@ def preprocess(df):
     df['PaymentMethod_Electronic check'] = (df.PaymentMethod=="Electronic check").astype('int')
     df['PaymentMethod_Mailed check'] = (df.PaymentMethod=="Mailed check").astype('int')
 
-    with open('../deployment/scalar','rb') as a:
+    with open('.Customer_churn/deployment/scalar','rb') as a:
         scalar=pickle.load(a)
 
     df[['tenure','MonthlyCharges','TotalCharges']] = scalar.transform(df[['tenure','MonthlyCharges','TotalCharges']])

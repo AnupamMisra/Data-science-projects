@@ -62,6 +62,8 @@ state=st.button("Get prediction")
 def plot_proba(items):
     fig,ax=plt.subplots()
     sns.kdeplot(sentiments, shade=True)
+    plt.xlabel("Probability of market rising")
+    plt.title("Density of sentiments towards market rising and falling tomorrow")
     st.pyplot(fig)
 
 if state:
@@ -70,6 +72,6 @@ if state:
     items=pd.Series(items)
     sentiments=predict(items)
     bullish=sentiments.mean()
-    st.write("Percentage chance of the market going up tomorrow: ", round(bullish*100,2), "%")
+    st.write("Probability of the market going up tomorrow: ", round(bullish*100,2), "%")
     plot_proba(sentiments)
 

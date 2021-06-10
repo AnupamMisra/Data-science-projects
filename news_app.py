@@ -47,7 +47,7 @@ def predict(items):
     sentiments=pd.Series([])
     for i in range(len(items)):
         t=TextBlob(items.iloc[i])
-        sentiments[i]=t.sentiment[0]*(1-t.sentiment[1])*len(items.iloc[i])
+        sentiments[i]=t.sentiment[0]*(1-t.sentiment[1])
     sentiments=sentiments[sentiments!=0]
     sentiments=1/(1+np.exp(-sentiments))
     return sentiments
@@ -55,24 +55,27 @@ def predict(items):
 st.title("Welcome to the stock movement prediction app")
 st.markdown("But don't hold me against it!")
 st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
-st.markdown("If the blog is more than one page long, enter the page URLs sequentially to generate results")
-urls=st.text_input("Please enter the URL(s) for ET live blog(.cms)")
+url1=st.text_input("Please enter the URL(s) for ET live blog(.cms) page 1  [.cms]")
+url2=st.text_input("Please enter the URL(s) for ET live blog(.cms) page 2  [curpg-2.cms]")
 state=st.button("Get prediction")
+
+urls=[url1,url2]
 
 def plot_proba(items):
     fig,ax=plt.subplots()
     sns.kdeplot(sentiments, shade=True)
-    plt.xlabel("Probability of market rising")
+    plt.xlabel("Bullish-->")
     plt.xlim(0,1)
-    plt.title("Density of sentiments towards market rising and falling tomorrow")
+    plt.ylabel("Density of bulls vs bears")
+    plt.title("Sentiment analysis: Bullish v/s bearish")
     st.pyplot(fig)
 
 if state:
     #for url in urls:
-    items.extend(page_reader(urls))
+    for url in urls:
+        items.extend(page_reader(url))
     items=pd.Series(items)
     sentiments=predict(items)
     bullish=sentiments.mean()
-    st.write("Probability of the market going up tomorrow: ", round(bullish*100,2), "%")
     plot_proba(sentiments)
 

@@ -63,6 +63,7 @@ def plot_proba(items):
     fig,ax=plt.subplots()
     sns.kdeplot(sentiments, shade=True)
     plt.xlabel("Probability of market rising")
+    plt.xlim(0,1)
     plt.title("Density of sentiments towards market rising and falling tomorrow")
     st.pyplot(fig)
 

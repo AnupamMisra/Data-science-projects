@@ -70,6 +70,6 @@ if state:
     items=pd.Series(items)
     sentiments=predict(items)
     bullish=sentiments.mean()
-    plot_proba(sentiments)
     st.write("Percentage chance of the market going up tomorrow: ", round(bullish*100,2), "%")
+    plot_proba(sentiments)
 

@@ -3,8 +3,6 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
-from nltk.tokenize import word_tokenize, sent_tokenize
-from nltk.stem import PorterStemmer, WordNetLemmatizer
 from textblob import TextBlob
 import matplotlib.pyplot as plt
 import numpy as np
@@ -15,8 +13,6 @@ url=[]
 
 
 def page_reader(url):
-
-    st.write(url)
 
     page_request = requests.get(url)
     data = page_request.content
@@ -56,11 +52,11 @@ def predict(items):
     sentiments=1/(1+np.exp(-sentiments))
     return sentiments
 
-st.title("Welcome to the news prediction app")
+st.title("Welcome to the stock movement prediction app")
 st.markdown("But don't hold me against it!")
 st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
-st.markdown("If the blog is more than one page long, enter the page URLs sequentially")
-urls=st.text_input("Please enter the URL(s) for ET live blog")
+st.markdown("If the blog is more than one page long, enter the page URLs sequentially to generate results")
+urls=st.text_input("Please enter the URL(s) for ET live blog(.cms)")
 state=st.button("Get prediction")
 
 def plot_proba(items):

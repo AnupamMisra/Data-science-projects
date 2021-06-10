@@ -58,7 +58,8 @@ def predict(items):
 
 st.title("Welcome to the news prediction app")
 st.markdown("But don't hold me against it!")
-st.markdown("If the blog is more than one page long, enter the page URLs as strings in a list")
+st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
+st.markdown("If the blog is more than one page long, enter the page URLs sequentially")
 urls=st.text_input("Please enter the URL(s) for ET live blog")
 state=st.button("Get prediction")
 

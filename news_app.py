@@ -54,7 +54,7 @@ def predict(items):
         sentiments[i]=t.sentiment[0]*(1-t.sentiment[1])*len(items.iloc[i])
     sentiments=sentiments[sentiments!=0]
     sentiments=1/(1+np.exp(-sentiments))
-    return sentiments.mean()
+    return sentiments
 
 st.title("Welcome to the news prediction app")
 st.markdown("But don't hold me against it!")
@@ -62,14 +62,17 @@ st.markdown("If the blog is more than one page long, enter the page URLs as stri
 urls=st.text_input("Please enter the URL(s) for ET live blog")
 state=st.button("Get prediction")
 
-
-
+def plot_proba(items):
+    fig,ax=plt.subplots()
+    sns.kdeplot(sentiments, shade=True)
+    st.pyplot(fig)
 
 if state:
     #for url in urls:
     items.extend(page_reader(urls))
     items=pd.Series(items)
-    bullish=predict(items)
-
-    st.write("Percentage change of the market going up tomorrow: ", round(bullish*100), "%")
+    sentiments=predict(items)
+    bullish=sentiments.mean()
+    plot_proba(sentiments)
+    st.write("Percentage chance of the market going up tomorrow: ", round(bullish*100,2), "%")
 

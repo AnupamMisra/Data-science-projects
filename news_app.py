@@ -10,8 +10,6 @@ import seaborn as sns
 items=[]
 url=[]
 
-
-
 def page_reader(url):
 
     page_request = requests.get(url)
@@ -79,3 +77,4 @@ if state:
     bullish=sentiments.mean()
     plot_proba(sentiments)
 
+    st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")

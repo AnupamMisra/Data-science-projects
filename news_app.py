@@ -3,7 +3,6 @@ import requests
 import pandas as pd
 from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
-from wordcloud import WordCloud
 from nltk.tokenize import word_tokenize, sent_tokenize
 from nltk.stem import PorterStemmer, WordNetLemmatizer
 from textblob import TextBlob
@@ -34,7 +33,6 @@ def page_reader(url):
                 items.append(head)
     return items   
 
-def wordcl(items):
     sents=[]
     news=''
     ctr=0
@@ -71,7 +69,6 @@ if state:
     #for url in urls:
     items.extend(page_reader(urls))
     items=pd.Series(items)
-    wordcl(items)
     bullish=predict(items)
 
     st.write("Percentage change of the market going up tomorrow: ", round(bullish*100), "%")

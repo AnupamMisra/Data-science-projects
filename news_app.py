@@ -82,6 +82,8 @@ try:
         bullish=sentiments.mean()
         plot_proba(sentiments)
         st.write(sentiments.mean())
+        st.write(sentiments.mode())
+        st.write(sentiments.median())
         st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")
 
 except:

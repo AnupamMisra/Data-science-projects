@@ -4,6 +4,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 from textblob import TextBlob
+import regex as re
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns 
@@ -50,31 +51,41 @@ def predict(items):
     sentiments=1/(1+np.exp(-sentiments))
     return sentiments
 
-st.title("Welcome to the stock movement prediction app")
-st.markdown("But don't hold me against it!")
-st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
-url1=st.text_input("Please enter the URL(s) for ET live blog(.cms) page 1  [.cms]")
-url2=st.text_input("Please enter the URL(s) for ET live blog(.cms) page 2  [curpg-2.cms]")
-state=st.button("Get prediction")
+try:
+    st.title("Welcome to the stock movement prediction app")
+    st.markdown("But don't hold me against it!")
+    st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
+    url1=st.text_input("Please enter the URL(s) for the ET live blog(.cms)")
 
-urls=[url1,url2]
+    pattern=re.findall("[\d]{6,}",url1)
+    url2=re.sub(pattern[0],f"msid-{pattern[0]},curpg-2",url1)
 
-def plot_proba(items):
-    fig,ax=plt.subplots()
-    sns.kdeplot(sentiments, shade=True)
-    plt.xlabel("Bullish-->")
-    plt.xlim(0,1)
-    plt.ylabel("Density of bulls vs bears")
-    plt.title("Sentiment analysis: Bullish v/s bearish")
-    st.pyplot(fig)
+    state=st.button("Get prediction")
 
-if state:
-    #for url in urls:
-    for url in urls:
-        items.extend(page_reader(url))
-    items=pd.Series(items)
-    sentiments=predict(items)
-    bullish=sentiments.mean()
-    plot_proba(sentiments)
+    urls=[url1,url2]
 
-    st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")
+    def plot_proba(items):
+        fig,ax=plt.subplots()
+        sns.kdeplot(sentiments, shade=True)
+        plt.xlabel("Bullish-->")
+        plt.xlim(0,1)
+        plt.ylabel("Density of bulls and bears")
+        plt.title("Sentiment analysis: Bullish v/s bearish")
+        st.pyplot(fig)
+
+    if state:
+        #for url in urls:
+        for url in urls:
+            items.extend(page_reader(url))
+        items=pd.Series(items)
+        sentiments=predict(items)
+        bullish=sentiments.mean()
+        plot_proba(sentiments)
+
+        st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")
+
+except:
+    st.write("Waiting for your input")
+
+
+

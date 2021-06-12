@@ -62,3 +62,30 @@ Confusion matrix:
 |Predicted negative|145| 1901|
 
 As we can see that the performance is very comparable. Lexicon based sentiment analysis will be very helpful in the cases of cold start and it is also easier to use. However it may require regular tweaking of the probability threshold to keep making money in the market.
+
+
+
+
+# Web scraping
+
+To do sentiment analysis and predict stock movement we are scraping the [live](https://economictimes.indiatimes.com/markets/stocks/liveblog) blog of ETNow at a daily basis manually. We are using Beautiful Soup to scrape the news headlines. Then we are doing sentiment analysis for each headline and fltering out the 0 values. Then these sentiments are passed through a sigmoid transformation to get a probability of market's downward movement the next day. If the probability>=0.519 we are predicting that the market will go down the next day.
+
+# Deployment
+
+The model is deployed using streamlit at:https://share.streamlit.io/coderkol95/data-science-projects/news_app.py
+
+It accepts the URL for the blog and using regex retrieves the second page. Then it performs sentiment analysis, plots a graph of the sentiment distribution and gives the mean sentiment and prediction value.
+
+|Data|Maket movement|Sentiment mean|Predicted market movement|Match|
+|--|--|--|--|--|
+31-May-2021|	Up|	0.516496683|	Up|	TRUE|
+1-Jun-2021|	Down|	0.527475938|	Down|	TRUE|
+2-Jun-2021	|Down|	0.513038052|	Up|	FALSE|
+3-Jun-2021|	Up|	0.513703426|	Up|	TRUE|
+4-Jun-2021|	Down|	0.525204113|	Down|	TRUE|
+7-Jun-2021|	Up|	0.511079811|	Up|	TRUE|
+8-Jun-2021|	Down|	0.522127037|	Down|	TRUE|
+9-Jun-2021|	Down|	0.519990586|	Down|	TRUE|
+10-Jun-2021|	Up|	0.518152047|	Up|	TRUE|
+11-Jun-2021|	Up|	0.518863727|	Up|	TRUE|
+14-Jun-2021||0.520700392|Down | |

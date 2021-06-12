@@ -79,11 +79,10 @@ try:
             items.extend(page_reader(url))
         items=pd.Series(items)
         sentiments=predict(items)
-        bullish=sentiments.mean()
         plot_proba(sentiments)
         st.write(sentiments.mean())
-        st.write(sentiments.mode())
-        st.write(sentiments.median())
+        out="Down" if sentiments.mean()>=0.519 else "Up"
+        st.write(out)
         st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")
 
 except:

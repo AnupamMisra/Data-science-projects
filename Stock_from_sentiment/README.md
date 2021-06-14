@@ -88,4 +88,4 @@ It accepts the URL for the blog and using regex retrieves the second page. Then 
 9-Jun-2021|	Down|	0.519990586|	Down|	TRUE|
 10-Jun-2021|	Up|	0.518152047|	Up|	TRUE|
 11-Jun-2021|	Up|	0.518863727|	Up|	TRUE|
-14-Jun-2021||0.520700392|Down | |
+14-Jun-2021||0.520700392|Down | Down| TRUE|

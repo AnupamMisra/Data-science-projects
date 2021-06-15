@@ -76,17 +76,17 @@ The model is deployed using streamlit at:https://share.streamlit.io/coderkol95/d
 
 It accepts the URL for the blog and using regex retrieves the second page. Then it performs sentiment analysis, plots a graph of the sentiment distribution and gives the mean sentiment and prediction value.
 
-|Data|Maket movement|Sentiment mean|Predicted market movement|Match|
+|Data|Maket movement|Sentiment mean|Predicted market movement|Incorrect|
 |--|--|--|--|--|
-31-May-2021|	Up|	0.516496683|	Up|	TRUE|
-1-Jun-2021|	Down|	0.527475938|	Down|	TRUE|
-2-Jun-2021	|Down|	0.513038052|	Up|	FALSE|
-3-Jun-2021|	Up|	0.513703426|	Up|	TRUE|
-4-Jun-2021|	Down|	0.525204113|	Down|	TRUE|
-7-Jun-2021|	Up|	0.511079811|	Up|	TRUE|
-8-Jun-2021|	Down|	0.522127037|	Down|	TRUE|
-9-Jun-2021|	Down|	0.519990586|	Down|	TRUE|
-10-Jun-2021|	Up|	0.518152047|	Up|	TRUE|
-11-Jun-2021|	Up|	0.518863727|	Up|	TRUE|
-14-Jun-2021|Up|0.520700392|Down | FALSE|
-15-Jun-2021|Up|0.51009369|Up|TRUE|
+31-May-2021|	Up|	0.516496683|	Up|	-|
+1-Jun-2021|	Down|	0.527475938|	Down|	-|
+2-Jun-2021	|Down|	0.513038052|	Up|	Yes|
+3-Jun-2021|	Up|	0.513703426|	Up|	-|
+4-Jun-2021|	Down|	0.525204113|	Down|	-|
+7-Jun-2021|	Up|	0.511079811|	Up|	-|
+8-Jun-2021|	Down|	0.522127037|	Down|	-|
+9-Jun-2021|	Down|	0.519990586|	Down|	-|
+10-Jun-2021|	Up|	0.518152047|	Up|	-|
+11-Jun-2021|	Up|	0.518863727|	Up|	-|
+14-Jun-2021|Up|0.520700392|Down | Yes|
+15-Jun-2021|Up|0.51009369|Up|-|

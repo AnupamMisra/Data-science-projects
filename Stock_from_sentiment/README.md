@@ -78,18 +78,18 @@ It accepts the URL for the blog and using regex retrieves the second page. Then 
 
 |Data|Maket movement|Sentiment mean|Predicted market movement|Incorrect|
 |--|--|--|--|--|
-31-May-2021|	Up|	0.516496683|	Up|	-|
-1-Jun-2021|	Down|	0.527475938|	Down|	-|
-2-Jun-2021	|Down|	0.513038052|	Up|	Yes|
-3-Jun-2021|	Up|	0.513703426|	Up|	-|
-4-Jun-2021|	Down|	0.525204113|	Down|	-|
-7-Jun-2021|	Up|	0.511079811|	Up|	-|
-8-Jun-2021|	Down|	0.522127037|	Down|	-|
-9-Jun-2021|	Down|	0.519990586|	Down|	-|
-10-Jun-2021|	Up|	0.518152047|	Up|	-|
-11-Jun-2021|	Up|	0.518863727|	Up|	-|
-14-Jun-2021|Up|0.520700392|Down | Yes|
-15-Jun-2021|Up|0.51009369|Up|-|
-16-Jun-2021|Down|0.515496939|Up|Yes|
-17-Jun-2021||0.516173752|Up|-|
+31-May-2021|	Up|	0.5164|	Up|	-|
+1-Jun-2021|	Down|	0.5274|	Down|	-|
+2-Jun-2021	|Down|	0.5130|	Up|	Yes|
+3-Jun-2021|	Up|	0.5137|	Up|	-|
+4-Jun-2021|	Down|	0.5252|	Down|	-|
+7-Jun-2021|	Up|	0.5110|	Up|	-|
+8-Jun-2021|	Down|	0.5221|	Down|	-|
+9-Jun-2021|	Down|	0.5199|	Down|	-|
+10-Jun-2021|	Up|	0.5181|	Up|	-|
+11-Jun-2021|	Up|	0.5188|	Up|	-|
+14-Jun-2021|Up|0.5207|Down | Yes|
+15-Jun-2021|Up|0.5100|Up|-|
+16-Jun-2021|Down|0.5154|Up|Yes|
+17-Jun-2021||0.5161|Up|-|
 18-Jun-2021||||-|

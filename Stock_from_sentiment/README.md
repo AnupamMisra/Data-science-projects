@@ -68,7 +68,7 @@ As we can see that the performance is very comparable. Lexicon based sentiment a
 
 # Web scraping
 
-To do sentiment analysis and predict stock movement we are scraping the [live](https://economictimes.indiatimes.com/markets/stocks/liveblog) blog of ETNow at a daily basis manually. We are using Beautiful Soup to scrape the news headlines. Then we are doing sentiment analysis for each headline and fltering out the 0 values. Then these sentiments are passed through a sigmoid transformation to get a probability of market's downward movement the next day. If the probability>=0.519 we are predicting that the market will go down the next day.
+To do sentiment analysis and predict stock movement we are scraping the [live](https://economictimes.indiatimes.com/markets/stocks/liveblog) blog of ETNow at a daily basis. We are using Beautiful Soup to scrape the news headlines. Then we are doing sentiment analysis for each headline and fltering out the 0 values. Then these sentiments are passed through a sigmoid transformation to get a probability of market's downward movement the next day. If the probability>=0.519 we are predicting that the market will go down the next day.
 
 # Deployment
 

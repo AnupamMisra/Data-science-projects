@@ -67,7 +67,7 @@ try:
     def plot_proba(items):
         fig,ax=plt.subplots()
         sns.kdeplot(sentiments, shade=True)
-        plt.xlabel("Bullish-->")
+        plt.xlabel("Bearish-->")
         plt.xlim(0,1)
         plt.ylabel("Density of bulls and bears")
         plt.title("Sentiment analysis: Bullish v/s bearish")

@@ -80,8 +80,8 @@ try:
         items=pd.Series(items)
         sentiments=predict(items)
         plot_proba(sentiments)
-        st.write(sentiments.mean())
-        out="Down" if sentiments.mean()>=0.519 else "Up"
+        st.write("Sentiment mean:",sentiments.mean())
+        out="Predicted movement: Down" if sentiments.mean()>=0.519 else "Predicted movement: Up"
         st.write(out)
 
 except:

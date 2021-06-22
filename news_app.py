@@ -54,7 +54,7 @@ def predict(items):
 try:
     st.title("Welcome to the stock movement prediction app")
     st.markdown("But don't hold me against it!")
-    st.markdown("You should select tomorrow's forecast from [here](https://economictimes.indiatimes.com/markets/stocks/liveblog)")
+    st.markdown("Please select the first link here [here](https://economictimes.indiatimes.com/markets/stocks/liveblog) and paste it below")
     url1=st.text_input("Please enter the URL(s) for the ET live blog(.cms)")
 
     pattern=re.findall("[\d]{6,}",url1)
@@ -83,7 +83,6 @@ try:
         st.write(sentiments.mean())
         out="Down" if sentiments.mean()>=0.519 else "Up"
         st.write(out)
-        st.markdown("This graph will always be bimodal. What determines the market movement is the density of bullish and bearish sentiment.")
 
 except:
     st.write("Waiting for your input")

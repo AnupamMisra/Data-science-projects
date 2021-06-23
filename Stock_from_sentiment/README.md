@@ -95,6 +95,6 @@ It accepts the URL for the blog and using regex retrieves the second page. Then 
 15|18-Jun-2021|Up|0.5152|Up|-|
 16|21-Jun-2021|Up|0.5052|Up|-|
 17|22-Jun-2021|Up|0.5125|Up|-|
-18|23-Jun-2021||0.5172|Up|-|
+18|23-Jun-2021|Down|0.5172|Up|5|
 19|24-Jun-2021||||-|
 20|25-Jun-2021||||-|

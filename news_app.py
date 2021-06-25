@@ -28,20 +28,6 @@ def page_reader(url):
                 items.append(head)
     return items   
 
-    sents=[]
-    news=''
-    ctr=0
-
-    sents=[sent for sent in items]
-    for j in range(len(sents)):
-        news=news+str(sents[j])
-    wowwords=WordCloud(stopwords=ENGLISH_STOP_WORDS.union(['Sensex','Nifty','stock','market','stocks','BSE','NSE','Nifty50','trade','trading','index']), background_color='white').generate(news)
-
-    plt.title('Wordcloud for today\'s news')
-    plt.imshow(wowwords,interpolation='bilinear')
-    plt.axis('off')
-    st.pyplot(plt)
-
 def predict(items):
     sentiments=pd.Series([])
     for i in range(len(items)):

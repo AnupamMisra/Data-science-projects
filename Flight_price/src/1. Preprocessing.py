@@ -5,6 +5,7 @@ from sklearn.pipeline import FeatureUnion, Pipeline
 from datetime import datetime as dt
 from sklearn.compose import ColumnTransformer
 from sklearn.base import TransformerMixin, BaseEstimator
+from sklearn.model_selection import train_test_split
 import pickle
 
 class date_splitter(BaseEstimator,TransformerMixin):
@@ -141,5 +142,14 @@ with open(r'./Flight_price/bin/encoder','wb') as f2:
 
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
 dataset=pd.DataFrame(pipe.fit_transform(pd.read_csv(r'./Flight_price/Data/flight_price.csv')))
-dataset.to_csv(r"./Flight_price/Data/dataset.csv")
+y=dataset.iloc[:,-1]
+X=dataset.iloc[:,:-1]
 
+X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=1234)
+
+trainset = pd.concat([X_train,y_train],axis=1)
+testset = pd.concat([X_test,y_test],axis=1)
+
+dataset.to_csv(r'./Flight_price/Data/dataset.csv')
+trainset.to_csv(r'./Flight_price/Data/trainset.csv')
+testset.to_csv(r'./Flight_price/Data/testset.csv')

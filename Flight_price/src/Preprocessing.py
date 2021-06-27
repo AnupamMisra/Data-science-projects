@@ -17,18 +17,13 @@ class date_splitter(BaseEstimator,TransformerMixin):
         return self
 
     def transform(self,X,y=None):
-        '''
-        try:
-            X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x), '%d-%m-%y'))
-        except:
-            X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x), '%Y-%m-%d %H:%M:%S')) # 
-'''
-      
-        X['Day of month'] = X.Date_of_Journey.apply(lambda x: x.strftime("%d")).astype(int)
-        X['Day of week'] = X.Date_of_Journey.apply(lambda x: x.strftime("%w")).astype(int)
-        X['Month of year'] = X.Date_of_Journey.apply(lambda x: x.strftime("%m")).astype(int)
-        X['Day of year'] = X.Date_of_Journey.apply(lambda x: x.timetuple().tm_yday)
-        
+
+        X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x),'%m/%d/%y'))
+        X['Day of month'] = X['Date_of_Journey'].apply(lambda x: x.strftime("%d")).astype(int)
+        X['Day of week'] = X['Date_of_Journey'].apply(lambda x: x.strftime("%w")).astype(int)
+        X['Month of year'] = X['Date_of_Journey'].apply(lambda x: x.strftime("%m")).astype(int)
+        X['Day of year'] = X['Date_of_Journey'].apply(lambda x: x.timetuple().tm_yday)
+
         X.drop(['Date_of_Journey'],axis=1,inplace=True)
         return X[['Day of month','Day of week','Month of year','Day of year']].values
 
@@ -52,7 +47,8 @@ class route(BaseEstimator,TransformerMixin):
         X['route'] = X['Source']+X['Destination']
 
         X['route'] = X['route'].map(mapper)
-        
+        X['route'] = X['route'].apply(lambda x:int(x))
+
         X.drop(['Source','Destination','Route','Additional_Info','Arrival_Time'],axis=1,inplace=True)
         
         return X[['route']].values
@@ -69,13 +65,13 @@ class time_trier(BaseEstimator,TransformerMixin):
         dur_hour = lambda x:x[:x.index("h")] if 'h' in x else 0
         dur_min = lambda x: x[x.index("m")-2:x.index("m")] if 'm' in x else 0
 
-        df['Duration_hours'] = df.Duration.apply(dur_hour)
-        df['Duration_mins'] = df.Duration.apply(dur_min)
+        X['Duration_hours'] = X.Duration.apply(dur_hour)
+        X['Duration_mins'] = X.Duration.apply(dur_min)
         
-        df.Duration_mins.replace({'':'0'},inplace=True)
+        X.Duration_mins.replace({'':'0'},inplace=True)
           
-        df.Duration_hours = df.Duration_hours.astype(int)
-        df.Duration_mins = df.Duration_mins.astype(int)
+        X['Duration_hours'] = X['Duration_hours'].apply(lambda x:int(x))
+        X['Duration_mins'] = X['Duration_mins'].apply(lambda x:int(x))
 
         X.drop(['Duration'],axis=1,inplace=True)
         
@@ -94,17 +90,17 @@ class tod_departure(BaseEstimator,TransformerMixin):
         hour = lambda x: x[:x.index(":")]        
         minutes = lambda x: x[x.index(":")+1:]
 
-        df['Dep_hour'] = df.Dep_Time.apply(hour)
-        df['Dep_minutes'] = df.Dep_Time.apply(minutes)
+        X['Dep_hour'] = X.Dep_Time.apply(hour)
+        X['Dep_minutes'] = X.Dep_Time.apply(minutes)
 
-        df.Dep_minutes = df.Dep_minutes.astype(int)
-        df.Dep_hour = df.Dep_hour.astype(int)
+        X['Dep_minutes'] = X['Dep_minutes'].apply(lambda x: int(x))
+        X['Dep_hour'] = X['Dep_hour'].apply(lambda x:int(x))
      
         tod = lambda x: 'early morning' if 0<x<=6 else('morning' if 6<x<=12 else ('noon' if 12<x<=16 else ('evening' if 16<x<=20 else 'night')))
-        df['TOD'] = df.Dep_hour.map(tod)
+        X['TOD'] = X.Dep_hour.map(tod)
         X.drop(['Dep_Time'],axis=1,inplace=True)
         
-        return X[['TOD','Dep_minutes','Dep_hour']].values
+        return X[['TOD','Dep_minutes','Dep_hour','Airline']].values
 
 class filters(BaseEstimator,TransformerMixin):
     def __init__(self, Total_Stops):
@@ -123,8 +119,8 @@ class filters(BaseEstimator,TransformerMixin):
         return X.values
 
 encoder=ColumnTransformer([('airline_TOD',OneHotEncoder(
-    drop=['Multiple carriers Premium economy','night']),
-    ['Airline','TOD'])], remainder='passthrough')
+    ),
+    [10,7])], remainder='passthrough')
 
 features=FeatureUnion(
 
@@ -136,8 +132,9 @@ features=FeatureUnion(
 
 
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
-
-dataset=pd.DataFrame(pipe.fit_transform(pd.read_csv(r'../Data/flight_price.csv')))
+df=pd.read_csv(r'../Data/flight_price.csv')
+#dataset=pd.DataFrame(pipe.fit_transform(df))
+dataset=df
 y=dataset.iloc[:,-1]
 X=dataset.iloc[:,:-1]
 
@@ -145,9 +142,13 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_s
 trainset = pd.concat([X_train,y_train],axis=1)
 testset = pd.concat([X_test,y_test],axis=1)
 
-dataset.to_csv(r'../Data/dataset.csv')
-trainset.to_csv(r'../Data/trainset.csv')
-testset.to_csv(r'../Data/testset.csv')
+dataset.columns = df.columns
+trainset.columns = df.columns
+testset.columns = df.columns
+
+dataset.to_csv(r'../Data/dataset.csv',index=False)
+trainset.to_csv(r'../Data/trainset.csv',index=False)
+testset.to_csv(r'../Data/testset.csv',index=False)
 
 with open(r'../bin/features.pkl','wb') as f1:
     pickle.dump(features,f1)

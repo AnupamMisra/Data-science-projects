@@ -4,9 +4,9 @@ I have always been fascinated by the stock market. I also traded for major part 
 
 # Methodology
 
-This is a long term project. Currently I have tested the waters with a comparison of sentiment based analysis between rule based and lexicon based models. 
+This is a long term project. Currently I have tested the waters with a comparison of sentiment based analysis between rule based and atutomated models. 
 The dataset used is Apple's news. In the rule based analysis I have trained a machine learning model on the data. 
-In the lexicon based analysis I have gauged each news article's sentiment polarity and objectivity. Then I have run it through a sigmoid transformation to get a probability value.
+In the automated analysis I have gauged each news article's sentiment polarity and objectivity. Then I have run it through a sigmoid transformation to get a probability value.
 When the probability is above a particular threshold, it predicts the positive class.
 
 # Wordcloud vizualized
@@ -31,14 +31,8 @@ KNN|	0.763441|	0.926136|	0.795122|	0.855643|
 
 We'll use GBM based on the above table as it scores >=0.90 in precision, recall and F1 score. Also, a very high recall and stagnant precision score indicates that those models predict the negative class for almost all the observations in the test set.
 
-Confusion matrix for `GBM`
-
-||True positive|True negative|
-|-|--|--|
-|Predicted positive|16|  39|
-|Predicted negative|19| 391|
        
-## Lexicon based model performance
+## Automated model performance
 
 After each sentiment is run through the sigmoid transformation:
 
@@ -54,14 +48,7 @@ Precision:  0.8837749883774988
 
 Accuracy:  0.8299612569952648
 
-Confusion matrix:
-
-||True positive|True negative|
-|-|--|--|
-|Predicted positive|27|  250|
-|Predicted negative|145| 1901|
-
-As we can see that the performance is very comparable. Lexicon based sentiment analysis will be very helpful in the cases of cold start and it is also easier to use. However it may require regular tweaking of the probability threshold to keep making money in the market.
+As we can see that the performance is very comparable. Automated sentiment analysis will be very helpful in the cases of cold start and it is also easier to use. However it may require regular tweaking of the probability threshold to keep making money in the market.
 
 
 
@@ -98,3 +85,8 @@ It accepts the URL for the blog and using regex retrieves the second page. Then 
 18|23-Jun-2021|Down|0.5172|Up|5|
 19|24-Jun-2021|Up|0.5067|Up|-|
 20|25-Jun-2021|Up|0.5155|Up|-|
+21|28-Jun-2021||||-|
+22|29-Jun-2021||||-|
+23|30-Jun-2021||||-|
+24|1-July-2021||||-|
+25|2-July-2021||||-|

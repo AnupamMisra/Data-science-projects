@@ -134,22 +134,24 @@ features=FeatureUnion(
         ('route_identifier', route('Source','Destination')),
         ('timer', time_trier('Duration')),
         ('time of departure',tod_departure('Dep_Time')) ])
-with open(r'./Flight_price/bin/features','wb') as f1:
-    pickle.dump(features,f1)
 
-with open(r'./Flight_price/bin/encoder','wb') as f2:
-    pickle.dump(encoder,f2)
 
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
-dataset=pd.DataFrame(pipe.fit_transform(pd.read_csv(r'./Flight_price/Data/flight_price.csv')))
+
+dataset=pd.DataFrame(pipe.fit_transform(pd.read_csv(r'../Data/flight_price.csv')))
 y=dataset.iloc[:,-1]
 X=dataset.iloc[:,:-1]
 
 X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_state=1234)
-
 trainset = pd.concat([X_train,y_train],axis=1)
 testset = pd.concat([X_test,y_test],axis=1)
 
 dataset.to_csv(r'./Flight_price/Data/dataset.csv')
 trainset.to_csv(r'./Flight_price/Data/trainset.csv')
 testset.to_csv(r'./Flight_price/Data/testset.csv')
+
+with open(r'./Flight_price/bin/features.pkl','wb') as f1:
+    pickle.dump(features,f1)
+
+with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
+    pickle.dump(encoder,f2)

@@ -17,14 +17,13 @@ class date_splitter(BaseEstimator,TransformerMixin):
         return self
 
     def transform(self,X,y=None):
-        
+        '''
         try:
             X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x), '%d-%m-%y'))
         except:
-            X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x), '%Y-%m-%d %H:%M:%S'))
-
-        #24-03-19
-        
+            X['Date_of_Journey'] = X['Date_of_Journey'].apply(lambda x: dt.strptime(str(x), '%Y-%m-%d %H:%M:%S')) # 
+'''
+      
         X['Day of month'] = X.Date_of_Journey.apply(lambda x: x.strftime("%d")).astype(int)
         X['Day of week'] = X.Date_of_Journey.apply(lambda x: x.strftime("%w")).astype(int)
         X['Month of year'] = X.Date_of_Journey.apply(lambda x: x.strftime("%m")).astype(int)
@@ -146,12 +145,12 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size=0.2, random_s
 trainset = pd.concat([X_train,y_train],axis=1)
 testset = pd.concat([X_test,y_test],axis=1)
 
-dataset.to_csv(r'./Flight_price/Data/dataset.csv')
-trainset.to_csv(r'./Flight_price/Data/trainset.csv')
-testset.to_csv(r'./Flight_price/Data/testset.csv')
+dataset.to_csv(r'../Data/dataset.csv')
+trainset.to_csv(r'../Data/trainset.csv')
+testset.to_csv(r'../Data/testset.csv')
 
-with open(r'./Flight_price/bin/features.pkl','wb') as f1:
+with open(r'../bin/features.pkl','wb') as f1:
     pickle.dump(features,f1)
 
-with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
+with open(r'../bin/encoder.pkl','wb') as f2:
     pickle.dump(encoder,f2)

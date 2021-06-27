@@ -1,5 +1,6 @@
 import pandas as pd 
-import numpy as np 
+import numpy as np
+from pandas.core.frame import DataFrame 
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import FeatureUnion, Pipeline
 from datetime import datetime as dt
@@ -7,6 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.base import TransformerMixin, BaseEstimator
 from sklearn.model_selection import train_test_split
 import pickle
+
 
 class date_splitter(BaseEstimator,TransformerMixin):
     
@@ -133,7 +135,7 @@ features=FeatureUnion(
 
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
 df=pd.read_csv(r'../Data/flight_price.csv')
-#dataset=pd.DataFrame(pipe.fit_transform(df))
+#df=pd.read_csv(r'./Flight_price/Data/flight_price.csv')
 dataset=df
 y=dataset.iloc[:,-1]
 X=dataset.iloc[:,:-1]
@@ -146,12 +148,38 @@ dataset.columns = df.columns
 trainset.columns = df.columns
 testset.columns = df.columns
 
+y = pd.DataFrame(trainset.Price)
+X = trainset.drop(['Price'], axis=1)
+y_test = pd.DataFrame(testset.Price)
+X_test = testset.drop(['Price'], axis=1)
+
+features.fit(X)
+X = pd.DataFrame(features.transform(X))
+X_test = pd.DataFrame(features.transform(X_test))
+encoder.fit(X)
+X = pd.DataFrame(encoder.transform(X))
+X_test = pd.DataFrame(encoder.transform(X_test))
+
+trainset = pd.concat([X,pd.DataFrame(y_train.values)],axis=1)    
+testset  =pd.concat([X_test, pd.DataFrame(y_test.values)],axis=1)
+
+#Outlier removal
+trainset['std_price'] = (trainset.iloc[:,-1]-trainset.iloc[:,-1].mean())/trainset.iloc[:,-1].std()
+trainset = trainset[(trainset['std_price']<3) & (trainset['std_price']>-3)]
+trainset.drop(['std_price'],axis=1,inplace=True)
+
 dataset.to_csv(r'../Data/dataset.csv',index=False)
 trainset.to_csv(r'../Data/trainset.csv',index=False)
 testset.to_csv(r'../Data/testset.csv',index=False)
-
+'''
+dataset.to_csv(r'./Flight_price/Data/dataset.csv',index=False)
+trainset.to_csv(r'./Flight_price/Data/trainset.csv',index=False)
+testset.to_csv(r'./Flight_price/Data/testset.csv',index=False)
+'''
+#with open(r'./Flight_price/bin/features.pkl','wb') as f1:
 with open(r'../bin/features.pkl','wb') as f1:
     pickle.dump(features,f1)
 
+#with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
 with open(r'../bin/encoder.pkl','wb') as f2:
     pickle.dump(encoder,f2)

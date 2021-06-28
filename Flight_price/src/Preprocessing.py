@@ -133,7 +133,7 @@ features=FeatureUnion(
 
 #Filtering only direct flights
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
-df=pd.read_csv(r'../Data/flight_price.csv')
+df=pd.read_csv(r'../data/flight_price.csv')
 #df=pd.read_csv(r'./Flight_price/data/flight_price.csv')
 dataset=pd.DataFrame(pipe.fit_transform(df))
 y=dataset.iloc[:,-1]

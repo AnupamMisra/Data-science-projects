@@ -1,6 +1,5 @@
 import pandas as pd 
 import numpy as np
-from pandas.core.frame import DataFrame 
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.pipeline import FeatureUnion, Pipeline
 from datetime import datetime as dt

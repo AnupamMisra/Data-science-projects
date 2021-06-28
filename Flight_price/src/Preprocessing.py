@@ -167,13 +167,13 @@ trainset['std_price'] = (trainset.iloc[:,-1]-trainset.iloc[:,-1].mean())/trainse
 trainset = trainset[(trainset['std_price']<3) & (trainset['std_price']>-3)]
 trainset.drop(['std_price'],axis=1,inplace=True)
 '''
-dataset.to_csv(r'../Data/dataset.csv',index=False)
-trainset.to_csv(r'../Data/trainset.csv',index=False)
-testset.to_csv(r'../Data/testset.csv',index=False)
+dataset.to_csv(r'../data/dataset.csv',index=False)
+trainset.to_csv(r'../data/trainset.csv',index=False)
+testset.to_csv(r'../data/testset.csv',index=False)
 '''
-dataset.to_csv(r'./Flight_price/Data/dataset.csv',index=False)
-trainset.to_csv(r'./Flight_price/Data/trainset.csv',index=False)
-testset.to_csv(r'./Flight_price/Data/testset.csv',index=False)
+dataset.to_csv(r'./Flight_price/data/dataset.csv',index=False)
+trainset.to_csv(r'./Flight_price/data/trainset.csv',index=False)
+testset.to_csv(r'./Flight_price/data/testset.csv',index=False)
 
 with open(r'./Flight_price/bin/features','wb') as f1:
 #with open(r'../bin/features','wb') as f1:

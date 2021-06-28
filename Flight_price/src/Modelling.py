@@ -33,8 +33,8 @@ def optimize(params, X,y):
     return np.mean(mapes)
     
 if __name__=='__main__':
-    trainset = pd.read_csv(r'./Flight_price/Data/trainset.csv')
-    testset = pd.read_csv(r'./Flight_price/Data/testset.csv')
+    trainset = pd.read_csv(r'./Flight_price/data/trainset.csv')
+    testset = pd.read_csv(r'./Flight_price/data/testset.csv')
     X_train, y_train = trainset.iloc[:,:-1], trainset.iloc[:,-1]
     X_test, y_test = testset.iloc[:,:-1], testset.iloc[:,-1]
 
@@ -43,8 +43,6 @@ if __name__=='__main__':
             "n_estimators": scope.int(hp.quniform('n_estimators',10,500,1)),
             "max_features": hp.uniform('max_features',0.01,1)
                 }
-
-    
 
     optimization_function = partial(optimize, X=X_train.values, y=y_train.values)
 
@@ -60,7 +58,7 @@ if __name__=='__main__':
 
     model = RandomForestRegressor(max_depth=int(result['max_depth']), max_features=result['max_features'], n_estimators=int(result['n_estimators']))
 
-    dataset = pd.read_csv(r'./Flight_price/Data/dataset.csv')
+    dataset = pd.read_csv(r'./Flight_price/data/dataset.csv')
 
     with open('./Flight_price/bin/features','rb') as f1:
         features=pickle.load(f1)

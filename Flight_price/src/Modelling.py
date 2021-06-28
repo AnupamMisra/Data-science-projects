@@ -5,7 +5,6 @@ from sklearn.model_selection import KFold
 from hyperopt import hp, fmin, tpe, Trials
 from hyperopt.pyll.base import scope
 from functools import partial
-
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_percentage_error
 
@@ -33,10 +32,23 @@ def optimize(params, X,y):
     return np.mean(mapes)
     
 if __name__=='__main__':
-    trainset = pd.read_csv(r'./Flight_price/data/trainset.csv')
-    testset = pd.read_csv(r'./Flight_price/data/testset.csv')
-    X_train, y_train = trainset.iloc[:,:-1], trainset.iloc[:,-1]
-    X_test, y_test = testset.iloc[:,:-1], testset.iloc[:,-1]
+    
+    with open('./Flight_price/bin/features','rb') as f1:
+        features=pickle.load(f1)
+
+    with open('./Flight_price/bin/encoder','rb') as f2:
+        encoder=pickle.load(f2)
+
+
+    dataset = pd.read_csv(r'./Flight_price/data/dataset.csv')
+    X, y = dataset.iloc[:,:-1], dataset.iloc[:,-1]
+
+    feats=features.fit(X)
+    X=feats.transform(X)
+    code=encoder.fit(X)
+    X=code.transform(X)
+
+
 
     rf_space = {
             "max_depth": scope.int(hp.quniform('max_depth',1,50,1)),
@@ -44,7 +56,7 @@ if __name__=='__main__':
             "max_features": hp.uniform('max_features',0.01,1)
                 }
 
-    optimization_function = partial(optimize, X=X_train.values, y=y_train.values)
+    optimization_function = partial(optimize, X=X.values, y=y.values)
 
     trials = Trials()
 
@@ -58,20 +70,6 @@ if __name__=='__main__':
 
     model = RandomForestRegressor(max_depth=int(result['max_depth']), max_features=result['max_features'], n_estimators=int(result['n_estimators']))
 
-    dataset = pd.read_csv(r'./Flight_price/data/dataset.csv')
-
-    with open('./Flight_price/bin/features','rb') as f1:
-        features=pickle.load(f1)
-
-    with open('./Flight_price/bin/encoder','rb') as f2:
-        encoder=pickle.load(f2)
-    X=dataset.iloc[:,:-1]
-    y=dataset.iloc[:,-1]
-
-    feats=features.fit(X)
-    X=feats.transform(X)
-    code=encoder.fit(X)
-    X=code.transform(X)
     model.fit(X,y)
 
     with open(r'./Flight_price/bin/feats','wb') as f1:

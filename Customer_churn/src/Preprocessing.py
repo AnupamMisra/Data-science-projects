@@ -36,11 +36,14 @@ X_train, X_test, y_train, y_test = train_test_split(df.drop(['Churn'],axis=1),ta
 X_train = pd.DataFrame(preprocessing.fit_transform(X_train))
 X_test = pd.DataFrame(preprocessing.transform(X_test))
 
-train = pd.concat([X_train, y_train], axis=1)
-test = pd.concat([X_test, y_test], axis=1)
+y_train = y_train.map({'Yes':1,'No':0})
+y_test = y_test.map({'Yes':1,'No':0})
+
+train = pd.concat([X_train, pd.DataFrame(y_train.values)], axis=1)
+test = pd.concat([X_test, pd.DataFrame(y_test.values)], axis=1)
 
 with open(r'./Customer_churn/bin/preprocessing','wb') as r:
     pickle.dump(preprocessing,r) 
 
-train.to_csv(r'./Customer_churn/data/train.csv')
-test.to_csv(r'./Customer_churn/data/test.csv')
+train.to_csv(r'./Customer_churn/data/train.csv', index=False)
+test.to_csv(r'./Customer_churn/data/test.csv',index=False)

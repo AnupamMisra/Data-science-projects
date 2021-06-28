@@ -134,8 +134,8 @@ features=FeatureUnion(
 
 #Filtering only direct flights
 pipe=Pipeline([('filter_hopping_flights', filters('Total_Stops'))])
-df=pd.read_csv(r'../Data/flight_price.csv')
-#df=pd.read_csv(r'./Flight_price/Data/flight_price.csv')
+#df=pd.read_csv(r'../Data/flight_price.csv')
+df=pd.read_csv(r'./Flight_price/Data/flight_price.csv')
 dataset=pd.DataFrame(pipe.fit_transform(df))
 y=dataset.iloc[:,-1]
 X=dataset.iloc[:,:-1]
@@ -167,7 +167,7 @@ testset  =pd.concat([X_test, pd.DataFrame(y_test.values)],axis=1)
 trainset['std_price'] = (trainset.iloc[:,-1]-trainset.iloc[:,-1].mean())/trainset.iloc[:,-1].std()
 trainset = trainset[(trainset['std_price']<3) & (trainset['std_price']>-3)]
 trainset.drop(['std_price'],axis=1,inplace=True)
-
+'''
 dataset.to_csv(r'../Data/dataset.csv',index=False)
 trainset.to_csv(r'../Data/trainset.csv',index=False)
 testset.to_csv(r'../Data/testset.csv',index=False)
@@ -175,11 +175,11 @@ testset.to_csv(r'../Data/testset.csv',index=False)
 dataset.to_csv(r'./Flight_price/Data/dataset.csv',index=False)
 trainset.to_csv(r'./Flight_price/Data/trainset.csv',index=False)
 testset.to_csv(r'./Flight_price/Data/testset.csv',index=False)
-'''
-#with open(r'./Flight_price/bin/features.pkl','wb') as f1:
-with open(r'../bin/features','wb') as f1:
+
+with open(r'./Flight_price/bin/features.pkl','wb') as f1:
+#with open(r'../bin/features','wb') as f1:
     pickle.dump(features,f1)
 
-#with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
-with open(r'../bin/encoder','wb') as f2:
+with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
+#with open(r'../bin/encoder','wb') as f2:
     pickle.dump(encoder,f2)

@@ -3,15 +3,16 @@ import streamlit as st
 import pandas as pd
 import pickle
 import Flight_price.src.Preprocessing
-import Flight_price.src.Modelling
+#import Flight_price.src.Modelling
 
 h=pd.read_csv(r"./Flight_price/data/hour_calculation.csv")
 
 st.title("Flight price prediction module for the awesome touring company")
  
 dat=st.date_input("When do you plan to take the flight?",datetime.date(2020, 5, 17))
+d=dat
 dat=str(dat.strftime('%m/%d/%y'))
-tim = st.time_input(f"At what time are you planning to fly on {dat.strftime('%d/%m%y')}?",datetime.time(7,1))
+tim = st.time_input(f"At what time are you planning to fly on {d.strftime('%d/%m/%y')}?",datetime.time(7,1))
 tim = str(tim.strftime('%H:%M'))
 
 
@@ -62,28 +63,25 @@ def processor(dat, tim, airline,src,dest):
  'Additional_Info'])).transpose()
     return vase
 
-try:
 
-    with open('../bin/feats','rb') as f1:
-        feats=pickle.load(f1)
-        
-    with open('../bin/code','rb') as f2:
-        code=pickle.load(f2)
+with open('./Flight_price/bin/feats','rb') as f1:
+    feats=pickle.load(f1)
+    
+with open('./Flight_price/bin/code','rb') as f2:
+    code=pickle.load(f2)
 
-    with open('../bin/model','rb') as f3:
-        model=pickle.load(f3)
+with open('./Flight_price/bin/model','rb') as f3:
+    model=pickle.load(f3)
+print(input)
+input=processor(dat, tim, airline,src,dest)
+input=feats.transform(input)
+input=code.transform(input)
+y=model.predict(input)[0]
 
-    input=processor(dat, tim, airline,src,dest)
-    input=feats.transform(input)
-    input=code.transform(input)
-    y=model.predict(input)[0]
 
-    time=duration(src,dest,airline)
+time=duration(src,dest,airline)
 
-    st.text(f"The estimated price for the flight is Rs. {y}")
-    st.text(f"Flight duration: {time}")
-    st.text("The prices won't be accurate as the model was trained on pre-Covid data.")
+st.text(f"The estimated price for the flight is Rs. {y}")
+st.text(f"Flight duration: {time}")
+st.text("The prices won't be accurate as the model was trained on pre-Covid data.")
 
-except:
-
-    st.write('Sorry the flights cannot be loaded for the selected combination')

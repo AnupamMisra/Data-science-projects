@@ -166,7 +166,7 @@ testset  =pd.concat([X_test, pd.DataFrame(y_test.values)],axis=1)
 trainset['std_price'] = (trainset.iloc[:,-1]-trainset.iloc[:,-1].mean())/trainset.iloc[:,-1].std()
 trainset = trainset[(trainset['std_price']<3) & (trainset['std_price']>-3)]
 trainset.drop(['std_price'],axis=1,inplace=True)
-
+'''
 dataset.to_csv(r'../data/dataset.csv',index=False)
 trainset.to_csv(r'../data/trainset.csv',index=False)
 testset.to_csv(r'../data/testset.csv',index=False)
@@ -174,11 +174,11 @@ testset.to_csv(r'../data/testset.csv',index=False)
 dataset.to_csv(r'./Flight_price/data/dataset.csv',index=False)
 trainset.to_csv(r'./Flight_price/data/trainset.csv',index=False)
 testset.to_csv(r'./Flight_price/data/testset.csv',index=False)
-'''
-#with open(r'./Flight_price/bin/features','wb') as f1:
-with open(r'../bin/features','wb') as f1:
+
+with open(r'./Flight_price/bin/features','wb') as f1:
+#with open(r'../bin/features','wb') as f1:
     pickle.dump(features,f1)
 
-#with open(r'./Flight_price/bin/encoder','wb') as f2:
-with open(r'../bin/encoder','wb') as f2:
+with open(r'./Flight_price/bin/encoder','wb') as f2:
+#with open(r'../bin/encoder','wb') as f2:
     pickle.dump(encoder,f2)

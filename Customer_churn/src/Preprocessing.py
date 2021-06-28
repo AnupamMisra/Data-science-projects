@@ -31,14 +31,16 @@ preprocessing = CT(
                     n_jobs=-1
                     )
 
-with open(r'./Customer_churn/binaries/preprocessing','wb') as r:
-    pickle.dump(preprocessing,r) 
-
-
 X_train, X_test, y_train, y_test = train_test_split(df.drop(['Churn'],axis=1),target, test_size=0.2, random_state=123456)
+
+X_train = pd.DataFrame(preprocessing.fit_transform(X_train))
+X_test = pd.DataFrame(preprocessing.transform(X_test))
 
 train = pd.concat([X_train, y_train], axis=1)
 test = pd.concat([X_test, y_test], axis=1)
 
-train.to_csv(r'./Customer_churn/Data/train.csv')
-test.to_csv(r'./Customer_churn/Data/test.csv')
+with open(r'./Customer_churn/bin/preprocessing','wb') as r:
+    pickle.dump(preprocessing,r) 
+
+train.to_csv(r'./Customer_churn/data/train.csv')
+test.to_csv(r'./Customer_churn/data/test.csv')

@@ -62,10 +62,10 @@ if __name__=='__main__':
 
     dataset = pd.read_csv(r'./Flight_price/Data/dataset.csv')
 
-    with open('./Flight_price/bin/features.pkl','rb') as f1:
+    with open('./Flight_price/bin/features','rb') as f1:
         features=pickle.load(f1)
 
-    with open('./Flight_price/bin/encoder.pkl','rb') as f2:
+    with open('./Flight_price/bin/encoder','rb') as f2:
         encoder=pickle.load(f2)
     X=dataset.iloc[:,:-1]
     y=dataset.iloc[:,-1]

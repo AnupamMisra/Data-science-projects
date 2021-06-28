@@ -3,6 +3,7 @@ import streamlit as st
 import pandas as pd
 import pickle
 import Flight_price.src.Preprocessing
+import Flight_price.src.Modelling
 
 h=pd.read_csv(r"./Flight_price/data/hour_calculation.csv")
 
@@ -10,7 +11,7 @@ st.title("Flight price prediction module for the awesome touring company")
  
 dat=st.date_input("When do you plan to take the flight?",datetime.date(2020, 5, 17))
 dat=str(dat.strftime('%m/%d/%y'))
-tim = st.time_input(f"At what time are you planning to fly on {dat}?",datetime.time(7,1))
+tim = st.time_input(f"At what time are you planning to fly on {dat.strftime('%d/%m%y')}?",datetime.time(7,1))
 tim = str(tim.strftime('%H:%M'))
 
 

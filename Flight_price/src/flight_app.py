@@ -2,10 +2,11 @@ import datetime
 import streamlit as st
 import pandas as pd
 import pickle
-import Flight_price.src.Preprocessing
+import Preprocessing
 #import Flight_price.src.Modelling
 
-h=pd.read_csv(r"./Flight_price/data/hour_calculation.csv")
+#h=pd.read_csv(r"./Flight_price/data/hour_calculation.csv")
+h=pd.read_csv(r"../data/hour_calculation.csv")
 
 st.title("Flight price prediction module for the awesome touring company")
  
@@ -63,16 +64,18 @@ def processor(dat, tim, airline,src,dest):
  'Additional_Info'])).transpose()
     return vase
 
-
-with open('./Flight_price/bin/feats','rb') as f1:
+with open('../bin/feats','rb') as f1:
+#with open('./Flight_price/bin/feats','rb') as f1:
     feats=pickle.load(f1)
-    
-with open('./Flight_price/bin/code','rb') as f2:
+
+with open('../bin/code','rb') as f2:
+#with open('./Flight_price/bin/code','rb') as f2:
     code=pickle.load(f2)
 
-with open('./Flight_price/bin/model','rb') as f3:
+with open('../bin/model','rb') as f3:
+#with open('./Flight_price/bin/model','rb') as f3:
     model=pickle.load(f3)
-print(input)
+
 input=processor(dat, tim, airline,src,dest)
 input=feats.transform(input)
 input=code.transform(input)

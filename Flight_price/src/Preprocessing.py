@@ -177,9 +177,9 @@ trainset.to_csv(r'./Flight_price/Data/trainset.csv',index=False)
 testset.to_csv(r'./Flight_price/Data/testset.csv',index=False)
 '''
 #with open(r'./Flight_price/bin/features.pkl','wb') as f1:
-with open(r'../bin/features.pkl','wb') as f1:
+with open(r'../bin/features','wb') as f1:
     pickle.dump(features,f1)
 
 #with open(r'./Flight_price/bin/encoder.pkl','wb') as f2:
-with open(r'../bin/encoder.pkl','wb') as f2:
+with open(r'../bin/encoder','wb') as f2:
     pickle.dump(encoder,f2)

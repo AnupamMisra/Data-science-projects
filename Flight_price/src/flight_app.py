@@ -4,7 +4,7 @@ import pandas as pd
 import pickle
 import Preprocessing
 
-h=pd.read_csv(r"../deployment/hour_calculation.csv")
+h=pd.read_csv(r"../data/hour_calculation.csv")
 
 st.title("Flight price prediction module for the awesome touring company")
  

@@ -84,9 +84,9 @@ It accepts the URL for the blog and using regex retrieves the second page. Then 
 17|22-Jun-2021|Up|0.5125|Up|-|
 18|23-Jun-2021|Down|0.5172|Up|5|
 19|24-Jun-2021|Up|0.5067|Up|-|
-20|25-Jun-2021|Up|0.5155|Up|-|
-21|28-Jun-2021|Down|0.5098|Up|6|
-22|29-Jun-2021||||-|
-23|30-Jun-2021||||-|
-24|1-July-2021||||-|
-25|2-July-2021||||-|
+20|27-Jun-2021|Up|0.5155|Up|-|
+21|28-Jun-2021|Down|Blog not written|-|-|
+22|29-Jun-2021|Down|0.5232|Down|-|
+23|30-Jun-2021|Down|0.5170|Up|6|
+24|1-July-2021|Down|0.5205|Down|-|
+25|2-July-2021||0.5191|Down|-|
